@@ -53,8 +53,15 @@
       <button type="submit">Predict</button>
     </form>
 
-    {% if prediction is not None %}
+    {% if prediction is not None %} {% if prediction == 1 %}
+    <h3 style="color: red">⚠️ The model predicts: At Risk for Diabetes</h3>
+    {% elif prediction == 0 %}
+    <h3 style="color: green">
+      ✅ The model predicts: Not at Risk for Diabetes
+    </h3>
+    {% else %}
     <h3>Prediction: {{ prediction }}</h3>
-    {% endif %}
+    <!-- fallback if somehow it's not 0 or 1 -->
+    {% endif %} {% endif %}
   </body>
 </html>
