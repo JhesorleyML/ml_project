@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diabetes Prediction</title>
+  </head>
+  <body>
+    <h2>Predict Diabetes</h2>
+    <form method="post">
+      {% csrf_token %} Gender:
+      <select name="gender">
+        <option value="1">Male</option>
+        <option value="0">Female</option></select
+      ><br /><br />
+
+      Age: <input type="number" name="age" step="1" required /><br /><br />
+      Hypertension:
+      <input
+        type="number"
+        name="hypertension"
+        min="0"
+        max="1"
+        required
+      /><br /><br />
+      Heart Disease:
+      <input
+        type="number"
+        name="heart_disease"
+        min="0"
+        max="1"
+        required
+      /><br /><br />
+
+      Smoking History:
+      <select name="smoking_history">
+        <option value="0">No Info</option>
+        <option value="1">Current</option>
+        <option value="2">Not Current</option>
+        <option value="3">Former</option>
+        <option value="4">Never</option></select
+      ><br /><br />
+
+      BMI: <input type="number" name="bmi" step="any" required /><br /><br />
+      HbA1c Level:
+      <input type="number" name="HbA1c_level" step="any" required /><br /><br />
+      Blood Glucose Level:
+      <input
+        type="number"
+        name="blood_glucose_level"
+        step="any"
+        required
+      /><br /><br />
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not None %}
+    <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+  </body>
+</html>
